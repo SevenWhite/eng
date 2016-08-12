@@ -1,0 +1,15 @@
+version: '2'
+services:
+  nodeserver:
+    build: ./containers/node
+    volumes:
+      - .:/code
+  webserver:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/usr/share/nginx/html
+      - ./containers/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+          - nodeserver
