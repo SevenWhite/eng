@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react';
 export default class AddNewVerb extends Component {
     render() {
         return (
-            <div className="modal fade" id="addNewVerb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div className="modal fade" id="addNewVerb" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
