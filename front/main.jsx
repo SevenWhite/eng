@@ -3,7 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import {render} from 'react-dom';
 
-import App from './thems/default/App.jsx';
+import router from './thems/default/Router.jsx';
 
-render(<App/>, document.getElementById('root'));
+render(router, document.getElementById('root'));
 

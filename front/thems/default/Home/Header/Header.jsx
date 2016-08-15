@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router';
 
 class Header extends Component {
     render() {
@@ -28,7 +29,7 @@ class Header extends Component {
                                 <p>Here you can see all words and forms of irregular verbs and add new words.</p>
                             </div>
                             <div className="row">
-                                <a href="vocabulary.html" type="button" className="btn btn-lg btn-primary">Show words</a>
+                                <Link to="vocabulary" className="btn btn-lg btn-primary">Show words</Link>
                             </div>
                         </div>
                     </div>

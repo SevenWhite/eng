@@ -13,11 +13,11 @@ class LastResults extends Component {
                     <table className="table text-center table-hover">
                         <thead>
                             <tr>
-                                <th><strong>№</strong></th>
-                                <th><strong>Date</strong></th>
-                                <th><strong>Right answers</strong></th>
-                                <th><strong>Wrong answers</strong></th>
-                                <th><strong>Percentage</strong></th>
+                                <th>№</th>
+                                <th>Date</th>
+                                <th>Right answers</th>
+                                <th>Wrong answers</th>
+                                <th>Percentage</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>

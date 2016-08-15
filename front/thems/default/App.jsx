@@ -2,18 +2,10 @@
 
 import React, {Component, PropTypes} from 'react';
 
-import Header from './Header/Header.jsx';
-import LastResults from './LastResults/LastResults.jsx';
-
-class App extends Component {
+export default class App extends Component {
     render() {
         return (
-            <div className="container">
-                <Header/>
-                <LastResults/>
-            </div>
+            <div className="container">{this.props.children}</div>
         );
     }
 }
-
-export default App;
