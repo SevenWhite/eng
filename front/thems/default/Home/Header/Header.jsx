@@ -18,7 +18,7 @@ class Header extends Component {
                                 <p>Here you can train your memory on knowing words and forms of irregular verbs.</p>
                             </div>
                             <div className="row">
-                                <a href="test.html" type="button" className="btn btn-lg btn-primary">Get test</a>
+                                <Link to="/test" className="btn btn-lg btn-primary">Get test</Link>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@ class Header extends Component {
                                 <p>Here you can see all words and forms of irregular verbs and add new words.</p>
                             </div>
                             <div className="row">
-                                <Link to="vocabulary" className="btn btn-lg btn-primary">Show words</Link>
+                                <Link to="/vocabulary" className="btn btn-lg btn-primary">Show words</Link>
                             </div>
                         </div>
                     </div>
