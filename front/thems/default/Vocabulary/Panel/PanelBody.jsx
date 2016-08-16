@@ -2,8 +2,14 @@
 
 import React, {Component, PropTypes} from 'react';
 
+import Word from './Word.jsx';
+
 export default class PanelBody extends Component {
+    static propTypes = {
+        words: PropTypes.array.isRequired
+    };
     render() {
+        const {words} = this.props;
         return (
             <div className="panel-body">
                 <div className="tabs">
@@ -41,20 +47,7 @@ export default class PanelBody extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>do</td>
-                                        <td>verb</td>
-                                        <td>делать</td>
-                                        <td><input type="checkbox"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>do</td>
-                                        <td>verb</td>
-                                        <td>делать</td>
-                                        <td><input type="checkbox"/></td>
-                                    </tr>
+                                    {words.map(word => <Word key={word.en} word={word} />)}
                                 </tbody>
                             </table>
                         </div>

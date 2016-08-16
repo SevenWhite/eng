@@ -5,11 +5,14 @@ import PanelHeading, {Links} from '../../parts/PanelHeading.jsx';
 import PanelBody from './PanelBody.jsx';
 
 export default class Panel extends Component {
+    static propTypes = {
+        words: PropTypes.array.isRequired
+    };
     render() {
         return (
             <div className="panel panel-info">
                 <PanelHeading name="Vocabulary" active={Links.VOCABULARY} />
-                <PanelBody/>
+                <PanelBody words={this.props.words}/>
             </div>
         );
     }
