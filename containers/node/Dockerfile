@@ -1,7 +1,7 @@
 FROM node:latest
 #ADD . /code
 #WORKDIR /code
-RUN npm i -g nodemon
-CMD nodemon /code/server/bin/start.js --watch /code/server
+#RUN npm i -g nodemon
+CMD node /code/server/bin/start.js
 #CMD nodemon /code/server/bin/start.js
 #CMD ls -la
