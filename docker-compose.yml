@@ -4,6 +4,10 @@ services:
     build: ./containers/node
     volumes:
       - .:/code
+    environment:
+      - NODE_PATH=./server/core
+    depends_on:
+      - mongodb
   webserver:
     image: nginx
     ports:
@@ -13,3 +17,7 @@ services:
       - ./containers/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
           - nodeserver
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"

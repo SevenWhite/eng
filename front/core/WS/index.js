@@ -1,36 +1,29 @@
 'use strict';
 
+import * as actions from '../../actions';
+
 export const WS = Symbol('WS');
 
 class WebSocket {
-	get socket() {
-		return this._socket;
-	}
-
-	set socket(value) {
-		this._socket = value;
-	}
-	get host() {
-		return this._host;
-	}
-
-	set host(value) {
-		this._host = value;
-	}
-	get connected() {
-		return this._connected;
-	}
-
-	set connected(value) {
-		this._connected = value;
-	}
 	_socket = null;
 	_host = APP.host;
 	_connected = false;
+	_dispatch = null;
 
-	connect() {
+	connect(dispatch) {
 		this._socket = io(this._host);
 		this._connected = true;
+		this._dispatch = dispatch;
+		this.listen();
+	}
+
+	listen() {
+		if (!this._connected) return;
+
+		this._socket.on('dispatch', settings => {
+			const {actionCreator, args} = settings;
+			this._dispatch(actions[actionCreator](...args));
+		});
 	}
 
 	emit(name, data, cb) {

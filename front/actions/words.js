@@ -13,6 +13,14 @@ export function addWord(en, ru) {
 	}
 }
 
+export const RESET_WORDS = 'RESET_WORDS';
+export function resetWords(words) {
+	return {
+		type: RESET_WORDS,
+		words
+	}
+}
+
 export const ADD_WORD_REQUEST = 'ADD_WORD_REQUEST';
 export function addWordRequest(en, ru) {
 	const word = {en, ru};
