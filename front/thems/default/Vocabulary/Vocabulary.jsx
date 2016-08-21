@@ -9,27 +9,31 @@ import AddNewNoun from './Modals/AddNewNoun.jsx';
 import AddNewVerb from './Modals/AddNewVerb.jsx';
 
 class Vocabulary extends Component {
-    render() {
-        return (
-            <div>
-                <Panel words={this.props.words} />
-                <AddNewNoun addWord={this.props.addWord}/>
-                <AddNewVerb/>
-            </div>
-        );
-    }
+	static propTypes = {
+		words: PropTypes.array.isRequired
+	};
+	render() {
+		return (
+			<div>
+				<Panel words={this.props.words}/>
+				<AddNewNoun addWordRequest={this.props.addWordRequest} />
+				<AddNewVerb/>
+			</div>
+		);
+	}
 }
 
 let mapStateToProps = state => {
-    return {
-        words: state.words.toArray()
-    }
+	const {words} = state;
+	return {
+		words: words.toArray()
+	}
 };
 
 let mapDispatchToProps = dispatch => {
-    return {
-        addWord: (en, ru) => dispatch(actions.addWord(en, ru))
-    }
+	return {
+		addWordRequest: (en, ru) => dispatch(actions.addWordRequest(en, ru))
+	}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vocabulary);

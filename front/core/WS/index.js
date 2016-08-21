@@ -1,5 +1,7 @@
 'use strict';
 
+export const WS = Symbol('WS');
+
 class WebSocket {
 	get socket() {
 		return this._socket;
@@ -31,10 +33,13 @@ class WebSocket {
 		this._connected = true;
 	}
 
-	emit(name, data) {
+	emit(name, data, cb) {
 		if (!this._connected) return;
 
-		this._socket.emit(name, data);
+		if (cb && typeof cb !== 'function')
+			throw new Error('Callback must be function');
+
+		this._socket.emit(name, data, cb);
 	}
 }
 

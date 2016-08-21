@@ -56,9 +56,9 @@ module.exports = {
 	plugins: [
 		new webpack.DefinePlugin({
 			'NODE_ENV': JSON.stringify(NODE_ENV),
-			'APP': {
+			'APP': JSON.stringify({
 				host: cfg.get('http.host')
-			}
+			})
 		}),
 		// new webpack.ProvidePlugin({
 		//     'jQuery': 'jquery',
