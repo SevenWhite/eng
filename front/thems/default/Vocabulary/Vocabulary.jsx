@@ -2,6 +2,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {createSelector} from 'reselect';
 
 import * as actions from '../../../actions';
 import Panel from './Panel/Panel.jsx';
@@ -23,10 +24,15 @@ class Vocabulary extends Component {
 	}
 }
 
+const getWords = state => state.words.toArray();
+const getReversedWords = createSelector(
+	[getWords],
+	words => words.reverse()
+);
+
 let mapStateToProps = state => {
-	const {words} = state;
 	return {
-		words: words.toArray()
+		words: getReversedWords(state)
 	}
 };
 

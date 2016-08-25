@@ -47,7 +47,7 @@ export default class PanelBody extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {words.map(word => <Word key={word.en} word={word} />)}
+                                    {words.map((word, index) => <Word key={word.en} word={word} number={index} />)}
                                 </tbody>
                             </table>
                         </div>

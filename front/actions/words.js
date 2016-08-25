@@ -3,13 +3,10 @@
 import {WS} from 'WS';
 
 export const ADD_WORD = 'ADD_WORD';
-export function addWord(en, ru) {
+export function addWord(word) {
 	return {
 		type: ADD_WORD,
-		word: {
-			en,
-			ru
-		}
+		word
 	}
 }
 

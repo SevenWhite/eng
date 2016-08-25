@@ -13,9 +13,9 @@ class WordController {
 
 		try {
 			word = yield word.save();
-			socket.emit('ADD_WORD_RESPONSE', {word});
+			socket.emit('dispatch', {actionCreator: 'addWord', args: [word]});
 		} catch (err) {
-			socket.emit('ADD_WORD_ERROR', {err});
+			socket.emit('dispatch', {actionCreator: 'ADD_WORD_ERROR', args: [err]});
 		}
 	}
 }
