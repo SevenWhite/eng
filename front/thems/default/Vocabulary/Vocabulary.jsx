@@ -11,12 +11,23 @@ import AddNewVerb from './Modals/AddNewVerb.jsx';
 
 class Vocabulary extends Component {
 	static propTypes = {
-		words: PropTypes.array.isRequired
+		words: PropTypes.array.isRequired,
+		addWordRequest: PropTypes.func.isRequired,
+		selectWord: PropTypes.func.isRequired,
+		selectAllWords: PropTypes.func.isRequired,
+		selectedWords: PropTypes.array.isRequired,
+		unselectAllWords: PropTypes.func.isRequired
 	};
 	render() {
 		return (
 			<div>
-				<Panel words={this.props.words}/>
+				<Panel
+					words={this.props.words}
+					selectWord={this.props.selectWord}
+					selectAllWords={this.props.selectAllWords}
+					selectedWords={this.props.selectedWords}
+				    unselectAllWords={this.props.unselectAllWords}
+				/>
 				<AddNewNoun addWordRequest={this.props.addWordRequest} />
 				<AddNewVerb/>
 			</div>
@@ -30,15 +41,21 @@ const getReversedWords = createSelector(
 	words => words.reverse()
 );
 
+const getSelectedWords = state => state.selectedWords.toArray();
+
 let mapStateToProps = state => {
 	return {
-		words: getReversedWords(state)
+		words: getReversedWords(state),
+		selectedWords: getSelectedWords(state)
 	}
 };
 
 let mapDispatchToProps = dispatch => {
 	return {
-		addWordRequest: (en, ru) => dispatch(actions.addWordRequest(en, ru))
+		addWordRequest: (en, ru) => dispatch(actions.addWordRequest(en, ru)),
+		selectWord: wordId => dispatch(actions.selectWord(wordId)),
+		selectAllWords: words => dispatch(actions.selectAllWords(words)),
+		unselectAllWords: () => dispatch(actions.unselectAllWords())
 	}
 };
 

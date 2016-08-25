@@ -6,8 +6,27 @@ import Word from './Word.jsx';
 
 export default class PanelBody extends Component {
     static propTypes = {
-        words: PropTypes.array.isRequired
+        words: PropTypes.array.isRequired,
+	    selectWord: PropTypes.func.isRequired,
+	    selectAllWords: PropTypes.func.isRequired,
+	    selectedWords: PropTypes.array.isRequired,
+	    unselectAllWords: PropTypes.func.isRequired
     };
+
+    constructor(props) {
+    	super(props);
+
+	    this.selectAll = this.selectAll.bind(this);
+    }
+
+    selectAll() {
+    	this.props.selectAllWords(this.props.words);
+    }
+
+    wordIsSelected(wordId) {
+    	return this.props.selectedWords.includes(wordId);
+    }
+
     render() {
         const {words} = this.props;
         return (
@@ -29,8 +48,8 @@ export default class PanelBody extends Component {
                                     </div>
                                     <div className="col col-md-6">
                                         <p className="text-right">
-                                            <button type="button" className="btn btn-success btn-md">Select all</button>
-                                            <button type="button" className="btn btn-danger btn-md">Clear all</button>
+                                            <button type="button" className="btn btn-success btn-md" onClick={this.selectAll}>Select all</button>
+                                            <button type="button" className="btn btn-danger btn-md" onClick={this.props.unselectAllWords} >Clear all</button>
                                         </p>
                                     </div>
                                 </div>
@@ -47,7 +66,11 @@ export default class PanelBody extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {words.map((word, index) => <Word key={word.en} word={word} number={index} />)}
+                                    {words.map((word, index) => <Word
+	                                    key={word.en} word={word} number={index}
+	                                    selectWord={this.props.selectWord}
+	                                    selected={this.wordIsSelected(word._id)}
+                                    />)}
                                 </tbody>
                             </table>
                         </div>
