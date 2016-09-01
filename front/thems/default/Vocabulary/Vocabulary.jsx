@@ -16,7 +16,8 @@ class Vocabulary extends Component {
 		selectWord: PropTypes.func.isRequired,
 		selectAllWords: PropTypes.func.isRequired,
 		selectedWords: PropTypes.array.isRequired,
-		unselectAllWords: PropTypes.func.isRequired
+		unselectAllWords: PropTypes.func.isRequired,
+		addIrregularVerbRequest: PropTypes.func.isRequired,
 	};
 	render() {
 		return (
@@ -29,7 +30,7 @@ class Vocabulary extends Component {
 				    unselectAllWords={this.props.unselectAllWords}
 				/>
 				<AddNewNoun addWordRequest={this.props.addWordRequest} />
-				<AddNewVerb/>
+				<AddNewVerb addIrregularVerbRequest={this.props.addIrregularVerbRequest} />
 			</div>
 		);
 	}
@@ -55,7 +56,8 @@ let mapDispatchToProps = dispatch => {
 		addWordRequest: (en, ru) => dispatch(actions.addWordRequest(en, ru)),
 		selectWord: wordId => dispatch(actions.selectWord(wordId)),
 		selectAllWords: words => dispatch(actions.selectAllWords(words)),
-		unselectAllWords: () => dispatch(actions.unselectAllWords())
+		unselectAllWords: () => dispatch(actions.unselectAllWords()),
+		addIrregularVerbRequest: verb => dispatch(actions.addIrregularVerbRequest(verb))
 	}
 };
 
