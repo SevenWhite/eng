@@ -18,6 +18,7 @@ class Vocabulary extends Component {
 		selectedWords: PropTypes.array.isRequired,
 		unselectAllWords: PropTypes.func.isRequired,
 		addIrregularVerbRequest: PropTypes.func.isRequired,
+		irregularVerbs: PropTypes.array.isRequired,
 	};
 	render() {
 		return (
@@ -28,6 +29,7 @@ class Vocabulary extends Component {
 					selectAllWords={this.props.selectAllWords}
 					selectedWords={this.props.selectedWords}
 				    unselectAllWords={this.props.unselectAllWords}
+					irregularVerbs={this.props.irregularVerbs}
 				/>
 				<AddNewNoun addWordRequest={this.props.addWordRequest} />
 				<AddNewVerb addIrregularVerbRequest={this.props.addIrregularVerbRequest} />
@@ -44,10 +46,17 @@ const getReversedWords = createSelector(
 
 const getSelectedWords = state => state.selectedWords.toArray();
 
+const getIrregularVerbs = state => state.irregularVerbs.toArray();
+const getReversedIrregularVerbs = createSelector(
+	[getIrregularVerbs],
+	verbs => verbs.reverse()
+);
+
 let mapStateToProps = state => {
 	return {
 		words: getReversedWords(state),
-		selectedWords: getSelectedWords(state)
+		selectedWords: getSelectedWords(state),
+		irregularVerbs: getReversedIrregularVerbs(state),
 	}
 };
 

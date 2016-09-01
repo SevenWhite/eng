@@ -27,7 +27,7 @@ export default class Word extends Component {
 		const {word, number} = this.props;
 		return (
 			<tr>
-				<td>{number}</td>
+				<td>{number + 1}</td>
 				<td>{word.en}</td>
 				<td>noun</td>
 				<td>{word.ru}</td>

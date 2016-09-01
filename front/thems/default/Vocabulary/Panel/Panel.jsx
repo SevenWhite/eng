@@ -23,6 +23,7 @@ export default class Panel extends Component {
 					selectAllWords={this.props.selectAllWords}
 				    selectedWords={this.props.selectedWords}
 				    unselectAllWords={this.props.unselectAllWords}
+					irregularVerbs={this.props.irregularVerbs}
 				/>
 			</div>
 		);
