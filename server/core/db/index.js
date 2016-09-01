@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise;
 
 /* models */
 require('./models/Word');
+require('./models/IrregularVerb');
 
 class Database {
 	constructor() {
