@@ -3,6 +3,8 @@
 import React, {Component, PropTypes} from 'react';
 import {Router, Route, Link, browserHistory, IndexRoute} from 'react-router';
 
+import store from '../../store';
+import * as actions from '../../actions';
 import App from './App.jsx';
 import Home from './Home/Home.jsx';
 import Vocabulary from './Vocabulary/Vocabulary.jsx';
@@ -12,15 +14,19 @@ import TestVocabulary from './Test/TestVocabulary.jsx';
 import TestVerbs from './Test/TestVerbs.jsx';
 
 export default (
-    <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute component={Home}/>
-            <Route path="vocabulary" component={Vocabulary}/>
-            <Route path="test" component={TestWrap}>
-                <IndexRoute component={Test} />
-                <Route path="vocabulary" component={TestVocabulary} />
-                <Route path="verbs" component={TestVerbs} />
-            </Route>
-        </Route>
-    </Router>
+	<Router history={browserHistory}>
+		<Route path="/" component={App}>
+			<IndexRoute component={Home}/>
+			<Route path="vocabulary" component={Vocabulary}/>
+			<Route path="test" component={TestWrap}>
+				<IndexRoute component={Test}/>
+				<Route path="vocabulary" component={TestVocabulary} onEnter={startTestFromVocabulary} />
+				<Route path="verbs" component={TestVerbs}/>
+			</Route>
+		</Route>
+	</Router>
 );
+
+function startTestFromVocabulary() {
+	store.dispatch(actions.startTestFromVocabulary());
+}
