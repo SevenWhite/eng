@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import Loading from '../parts/Loading.jsx';
 
-class TestVocabulary extends Component {
+class TestFromVocabulary extends Component {
 	static propTypes = {
 		testFromVocabulary: PropTypes.shape({
 			isFetched: PropTypes.bool.isRequired
@@ -44,4 +44,4 @@ let mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(TestVocabulary)
+export default connect(mapStateToProps)(TestFromVocabulary)

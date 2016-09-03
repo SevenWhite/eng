@@ -10,7 +10,7 @@ import Home from './Home/Home.jsx';
 import Vocabulary from './Vocabulary/Vocabulary.jsx';
 import TestWrap from './Test/TestWrap.jsx';
 import Test from './Test/Test.jsx';
-import TestVocabulary from './Test/TestVocabulary.jsx';
+import TestVocabulary from './Test/TestFromVocabulary.jsx';
 import TestVerbs from './Test/TestVerbs.jsx';
 
 export default (

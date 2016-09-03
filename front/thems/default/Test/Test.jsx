@@ -10,7 +10,7 @@ export default class Test extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xs-6">
-                            <Link to="/test/vocabulary"><button type="button" className="btn btn-primary btn-lg">Test vocabulary</button></Link>
+                            <Link to="/test/vocabulary"><button type="button" className="btn btn-primary btn-lg">Test from vocabulary</button></Link>
                         </div>
                         <div className="col-xs-6">
                             <Link to="/test/verbs"><button type="button" className="btn btn-primary btn-lg">Test irregular verbs</button></Link>
