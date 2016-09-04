@@ -8,7 +8,8 @@ import Loading from '../parts/Loading.jsx';
 class TestFromVocabulary extends Component {
 	static propTypes = {
 		testFromVocabulary: PropTypes.shape({
-			isFetched: PropTypes.bool.isRequired
+			isFetched: PropTypes.bool.isRequired,
+			question: PropTypes.string.isRequired
 		}).isRequired
 	};
 
@@ -23,7 +24,7 @@ class TestFromVocabulary extends Component {
 						<div className="row">
 							<h2>Translate in English:</h2>
 							<form action="#" method="post" className="form-inline">
-								<h3>Делать</h3><br />
+								<h3>{testFromVocabulary.question}</h3><br />
 								<input type="text" className="form-control" name="1"/>
 								<br /><br />
 								<button type="submit" className="btn btn-success btn-lg">Send</button>

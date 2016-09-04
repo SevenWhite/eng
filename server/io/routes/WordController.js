@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 let Word = mongoose.model("Word");
 
 class WordController {
-	static* addWord(socket, data) {
+	static* addWord(emit, data) {
 		const {en, ru} = data.word;
 
 		// todo add error handling
@@ -17,10 +17,10 @@ class WordController {
 		try {
 			word = yield word.save();
 			// todo incorrect call
-			socket.emit('dispatch', {actionCreator: 'addWord', args: [word]});
+			emit('addWord', word);
 		} catch (err) {
 			//todo wrong actionCreator
-			socket.emit('dispatch', {actionCreator: 'ADD_WORD_ERROR', args: [err]});
+			emit('ADD_WORD_ERROR', err);
 		}
 	}
 }

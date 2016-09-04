@@ -10,7 +10,7 @@ import Home from './Home/Home.jsx';
 import Vocabulary from './Vocabulary/Vocabulary.jsx';
 import TestWrap from './Test/TestWrap.jsx';
 import Test from './Test/Test.jsx';
-import TestVocabulary from './Test/TestFromVocabulary.jsx';
+import TestFromVocabulary from './Test/TestFromVocabulary.jsx';
 import TestVerbs from './Test/TestVerbs.jsx';
 
 export default (
@@ -20,7 +20,7 @@ export default (
 			<Route path="vocabulary" component={Vocabulary}/>
 			<Route path="test" component={TestWrap}>
 				<IndexRoute component={Test}/>
-				<Route path="vocabulary" component={TestVocabulary} onEnter={startTestFromVocabulary} />
+				<Route path="vocabulary" component={TestFromVocabulary} onEnter={startTestFromVocabulary} />
 				<Route path="verbs" component={TestVerbs}/>
 			</Route>
 		</Route>
@@ -28,5 +28,5 @@ export default (
 );
 
 function startTestFromVocabulary() {
-	store.dispatch(actions.startTestFromVocabulary());
+	store.dispatch(actions.startTestFromVocabulary(store.getState().selectedWords.toArray()));
 }

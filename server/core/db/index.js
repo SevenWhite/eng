@@ -7,6 +7,9 @@ mongoose.Promise = global.Promise;
 /* models */
 require('./models/Word');
 require('./models/IrregularVerb');
+require('./models/Answer');
+require('./models/Question');
+require('./models/TestFromVocabulary');
 
 class Database {
 	constructor() {
