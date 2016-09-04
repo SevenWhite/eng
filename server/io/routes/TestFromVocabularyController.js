@@ -12,14 +12,27 @@ class TestFromVocabularyController {
 		// There is must be check existing test
 
 		try {
-			let selectedWordsIds = data.selectedWords;
-			let test = yield* TestFromVocabularyController.createTest(selectedWordsIds);
+			let test;
+
+			test = yield* TestFromVocabularyController.getExistingTest();
+
+			if (!test) {
+				let selectedWordsIds = data.selectedWords;
+				test = yield* TestFromVocabularyController.createTest(selectedWordsIds);
+			}
 
 			TestFromVocabularyController.sendNextQuestion(emit, test);
 		} catch (err) {
 			console.log('err', err);
 		}
 
+	}
+
+	static* getExistingTest() {
+		return yield TestFromVocabulary.findOne({finished: false}).populate({
+			path: 'questions',
+			populate: {path: 'word', select: 'ru'}
+		});
 	}
 
 	static* createTest(selectedWordsIds) {
@@ -37,8 +50,7 @@ class TestFromVocabularyController {
 		questions = yield Promise.all(questions);
 
 		let test = new TestFromVocabulary({questions});
-		test = yield test.save();
-		return test;
+		return yield test.save();
 	}
 
 	static sendNextQuestion(emit, test) {

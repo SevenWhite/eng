@@ -6,11 +6,11 @@ let Schema = mongoose.Schema;
 let TestFromVocabularySchema = Schema({
 	finished: {
 		type: Boolean,
-		defaultValue: false
+		default: false
 	},
 	percentageOfCorrectAnswers: {
 		type: Number,
-		defaultValue: 0
+		default: 0
 	},
 	questions: [{type: Schema.Types.ObjectId, ref: 'Question'}]
 });
